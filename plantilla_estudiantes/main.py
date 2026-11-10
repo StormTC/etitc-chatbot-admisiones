@@ -45,15 +45,13 @@ def verificar_estado() -> dict:
     """
     Endpoint de diagnóstico para comprobar que la API y el JSON institucional están activos.
     """
-    # TODO: [Estudiante 1] - Implementar la respuesta del endpoint `/health`.
-    # Debe retornar un diccionario JSON con las siguientes llaves:
-    # - `"status"`: `"ok"`
-    # - `"institucion"`: nombre de la institución leído desde `intent_service.kb_data`
-    # - `"departamento"`: nombre del departamento leído desde `intent_service.kb_data`
-    # - `"intenciones_cargadas"`: cantidad total de intenciones en `intent_service.kb_data["intenciones"]`
-    # - `"monitor_activo"`: nombre del estudiante monitor desde `tts_service.nombre_guia`
-    raise NotImplementedError("TODO: [Estudiante 1] Debe implementar el endpoint /health")
-
+    return {
+        "status": "ok",
+        "institucion": intent_service.kb_data.get("institucion"),
+        "departamento": intent_service.kb_data.get("departamento"),
+        "intenciones_cargadas": len(intent_service.kb_data.get("intenciones", [])),
+        "monitor_activo": tts_service.nombre_guia,
+    }
 
 @app.get("/api/v1/admisiones/catalogo", tags=["Base de Conocimiento"])
 def listar_catalogo_admisiones() -> dict:
