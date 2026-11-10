@@ -51,11 +51,8 @@ class VoiceChatResponse(BaseModel):
     """
     Respuesta integral del endpoint principal `/api/v1/chat/voz`.
     """
-    # TODO: [Estudiante 1] - Definir los atributos del modelo de respuesta `VoiceChatResponse`.
-    # Debe incluir exactamente los siguientes 5 campos tipados:
-    # 1. `session_id`: tipo `str`
-    # 2. `transcripcion`: tipo `STTResult`
-    # 3. `intencion`: tipo `IntentMatchResult`
-    # 4. `voz_estudiante`: tipo `TTSOutput`
-    # 5. `garantia_no_alucinacion`: tipo `bool` con valor por defecto `True`
-    pass
+    session_id: str
+    transcripcion: STTResult
+    intencion: IntentMatchResult
+    voz_estudiante: TTSOutput
+    garantia_no_alucinacion: bool = True
